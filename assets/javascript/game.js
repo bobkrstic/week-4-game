@@ -15,14 +15,18 @@
 
 // if the playerScore is equal to holdsRandomNumber wins++
 // if the playerScore is greater then holdsRandomNumber losses++
+// reset all variables start the game over by calling startGame() function
 
-// reset all variables
+
 // reset playerScore
 // reset holdsRandomNumber
 // start game from the begining keeping wins and losses result active
 
 $(document).ready(function () {
 
+
+	// the game will only start from 0 wins/lose score when the page is 
+	// loaded from the beginning. 
 	var red = 0;
 	var blue = 0;
 	var yellow = 0;
@@ -32,29 +36,34 @@ $(document).ready(function () {
 	var win = 0;
 	var lose = 0; 
 
+	// once you get to this line, call the function and start the game
+	// from the begining but keeping the current win/lose score. 
     startGame();
 
-	// var number = 1 + Math.floor(Math.random() * 12);
-function startGame() {
+	function startGame() {
 
-	red = 1 + Math.floor(Math.random() * 12);
-	blue = 1 + Math.floor(Math.random() * 12);
-	yellow = 1 + Math.floor(Math.random() * 12);
-	green = 1 + Math.floor(Math.random() * 12);
-	playerScoreNumber = 0;
-	
+		red = 1 + Math.floor(Math.random() * 12);
+		blue = 1 + Math.floor(Math.random() * 12);
+		yellow = 1 + Math.floor(Math.random() * 12);
+		green = 1 + Math.floor(Math.random() * 12);
+		playerScoreNumber = 0;
+		
 
-	console.log(red, blue, yellow, green);
+		console.log(red, blue, yellow, green);
 
-	numberToGuess = Math.floor(Math.random() * 102) + 19;
-	console.log(numberToGuess);
-	$("#holdsRandomNumber").text(numberToGuess);
-	$("#playerScore").text(playerScoreNumber);
-	$("#winsScore").text(win);
-	$("#lossesScore").text(lose);
+		numberToGuess = Math.floor(Math.random() * 102) + 19;
+		console.log(numberToGuess);
 
-}
+		$("#holdsRandomNumber").text(numberToGuess);
+		$("#playerScore").text(playerScoreNumber);
+		$("#winsScore").text(win);
+		$("#lossesScore").text(lose);
+	}
 
+
+
+
+		// when you click red button aka red diamond
 		$("#redDiamond").on("click", function() {
 			// alert("working");
 			playerScoreNumber = playerScoreNumber + red;
@@ -71,8 +80,6 @@ function startGame() {
 			      lose++;
 			      startGame();
 			    }
-
-
 		});
 
 
@@ -83,18 +90,17 @@ function startGame() {
 			playerScoreNumber = playerScoreNumber + blue;
 			$("#playerScore").text(playerScoreNumber);
 
-			 			if (playerScoreNumber === numberToGuess) {
-					      alert("You win!");
-					      win++;
-					      startGame();
-					    }
+			 	if (playerScoreNumber === numberToGuess) {
+					alert("You win!");
+				    win++;
+					startGame();
+				}
 
-					    else if (playerScoreNumber >= numberToGuess) {
-					      alert("You lose!!");
-					      lose++;
-					      startGame();
-					    }
-
+				else if (playerScoreNumber >= numberToGuess) {
+					alert("You lose!!");
+					lose++;
+					startGame();
+				}
 		});
 
 
@@ -105,18 +111,17 @@ function startGame() {
 			// alert("working");
 			playerScoreNumber = playerScoreNumber + yellow;
 			$("#playerScore").text(playerScoreNumber);
-		 			if (playerScoreNumber === numberToGuess) {
-				      alert("You win!");
-				      win++;
-				      startGame();
+		 		if (playerScoreNumber === numberToGuess) {
+				    alert("You win!");
+				    win++;
+				    startGame();
 				    }
 
 				    else if (playerScoreNumber >= numberToGuess) {
-				      alert("You lose!!");
-				      lose++;
-				      startGame();
+				    alert("You lose!!");
+				    lose++;
+				    startGame();
 				    }
-
 		});
 
 
@@ -140,12 +145,5 @@ function startGame() {
 		      startGame();
 		    }
 		});
-
-
-
-
-
-
-
 
 });
